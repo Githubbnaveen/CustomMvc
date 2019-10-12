@@ -1,0 +1,104 @@
+﻿@model CustomMvc.Models.CustomMvcClass.FormTable
+
+
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("CreatePost", "FormTable"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Table</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.FormName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FormName, new { htmlAttributes = new { @class = "form-control",@required="required" } })
+                @Html.ValidationMessageFor(model => model.FormName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FormType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{ 
+                    List<SelectListItem> selectListItems = new List<SelectListItem>
+                     {
+                        new SelectListItem{Text="FORM",Value="FORM"},
+                        new SelectListItem{Text="FORMWITHTABLE",Value="FORMWITHTABLE"},
+                        new SelectListItem{Text="FILTER",Value="FILTER"},
+
+                };
+
+
+                    ;
+                }
+                @Html.DropDownListFor(model => model.FormType, selectListItems , new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FormType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FormJavaScript, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.FormJavaScript, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FormJavaScript, "", new { @class = "text-danger" })
+
+                <div id="jsload" style="height:400px;width:100%"></div>
+                <script>
+                    var editor1 = ace.edit("jsload");
+                    editor1.setTheme("ace/theme/twilight");
+                    editor1.session.setMode("ace/mode/javascript");
+                             var textareaFormLoad = $('textarea[id="FormJavaScript"]').hide();
+                             editor1.getSession().setValue(textareaFormLoad.val());
+                             editor1.getSession().on('change', function () {
+                                 textareaFormLoad.val(editor1.getSession().getValue());
+                             });
+                </script>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Rights, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.Rights, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Rights, "", new { @class = "text-danger" })
+                <div id="jsloadindex" style="height:300px;width:100%"></div>
+                <script>
+                    var editor = ace.edit("jsloadindex");
+                             editor.setTheme("ace/theme/twilight");
+                             editor.session.setMode("ace/mode/javascript");
+                             var textarea = $('textarea[id="Rights"]').hide();
+                             editor.getSession().setValue(textarea.val());
+                             editor.getSession().on('change', function () {
+                                 textarea.val(editor.getSession().getValue());
+                             });
+                </script>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,121 @@
+﻿@using CustomMvc.Models.CustomMvcClass
+
+@{
+    ViewBag.Title = "Create";
+
+    List<FormPropertyTable> ListOfFPT =(List<FormPropertyTable>) ViewData["ListOfFPT"];
+
+    dynamic ListOFTData = ViewData["OBJFPTEMP"];
+
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>T7</h4>
+    <hr />
+    @foreach (FormPropertyTable Obj in ListOfFPT)
+    {
+        switch (Obj.FieldType)
+        {
+
+            case "TEXT":
+            case"TEXT-READONLY":
+            case "TEXT-HIDDEN":
+            case "PASSWORD":
+            case "TEXT-HIDDEN":
+
+                If(Obj.FieldType == "TEXT-READONLY"){
+
+
+                }
+                break;
+                else if(Object.)
+
+
+                    @If Obj.Typ = "TEXT-HIDDEN" Then
+                        @<div>
+                @Html.Hidden(Prefix + Obj.FormmPropertyId.ToString, If(Objjstr Is Nothing, Nothing, Objjstr.ToString), Htm)
+            </div>
+            @<script type="text/javascript">
+                                @(New HtmlString(Obj.JSWeb))
+</script>
+ElseIf Obj.Typ = "PASSWORD" Then
+            
+
+@<div class="col-sm-@(Obj.Span)">
+    @If ShowLabel Then
+    If Obj.Mandatory = True Then
+    @Html.Label(Obj.FormmPropertyName + " *")
+    Else
+    @Html.Label(Obj.FormmPropertyName)
+    End If
+    End If
+    @*@If Obj.Mandatory = True Then
+            @Html.Label(Obj.FormmPropertyName + " *")                  Else
+            @Html.Label(Obj.FormmPropertyName)
+        End If*@
+    @Html.Password(Prefix + Obj.FormmPropertyId.ToString, If(Objjstr Is Nothing, Nothing, Objjstr.ToString), Htm)
+    @*@Html.ValidationMessage(Prefix + Obj.FormmPropertyId.ToString, Nothing, New With {.class = "error"})*@
+    <script type="text/javascript">
+                        @(New HtmlString(Obj.JSWeb))
+    </script>
+</div> Else
+
+
+@<div class="col-sm-@(Obj.Span)">
+    @*@If Obj.Mandatory = True Then
+        @Html.Label(Obj.FormmPropertyName + " *")
+                    Else
+        @Html.Label(Obj.FormmPropertyName)
+                    End If*@
+    @If ShowLabel Then
+    If Obj.Mandatory = True Then
+    @Html.Label(Obj.FormmPropertyName + " *")
+    Else
+    @Html.Label(Obj.FormmPropertyName)
+    End If
+    End If
+
+    @Html.TextBox(Prefix + Obj.FormmPropertyId.ToString, If(Objjstr Is Nothing, Nothing, Objjstr.ToString), Htm)
+    @*@Html.ValidationMessage(Prefix + Obj.FormmPropertyId.ToString, Nothing, New With {.class = "error"})*@
+    <script type="text/javascript">
+                        @(New HtmlString(Obj.JSWeb))
+    </script>
+</div>
+                    End If
+
+
+
+
+
+
+
+
+
+
+           }
+
+
+
+
+
+
+    }
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

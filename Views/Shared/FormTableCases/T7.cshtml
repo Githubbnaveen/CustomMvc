@@ -1,0 +1,50 @@
+﻿@using CustomMvc.Models.TableModels;
+@{
+    Layout = null;
+    
+}
+
+
+
+@{ 
+    string Cases = ViewData["CASE"].ToString();
+
+    switch (Cases)
+    {
+
+        case "INDEX":
+
+            List<T7> ListOfT7 = new T7().GetAll();
+
+         TempData["ListOfFPTEMP"] = ListOfT7;
+            break;
+
+
+        case "CREATE":
+            break;
+        case "CREATE-END":
+            break;
+
+        case "EDIT":
+            break;
+        case "EDIT-END":
+            break;
+
+        case "CUSTOM-BUTTON":
+            break;
+        case "CUSTOM-FIELD":
+            break;
+        case "INDEX-END":
+            break;
+
+
+
+
+    }
+
+
+
+
+
+}
+

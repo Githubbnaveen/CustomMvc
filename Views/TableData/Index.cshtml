@@ -1,0 +1,42 @@
+﻿@using Newtonsoft.Json;
+@using CustomMvc.Models.CustomMvcClass;
+
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+
+    // var ListOfObjects = Newtonsoft.Json.JsonConvert.SerializeObject(ViewData["ListOfTableData"]);
+    // ViewResult viewresult = View(StaticMembers.SharedFolderName+StaticMembers.FormTablePrefix +Fid.ToString());
+    // viewresult.ExecuteResult(this.ControllerContext);
+    dynamic ListOfData = ViewData["ListOfTableData"];
+    List<FormPropertyTable> ListOfFPT =(List<FormPropertyTable>) ViewData["ListOfFPT"];
+
+}
+
+<h2>Index</h2>
+<table class="table">
+    <tr>
+        @foreach (FormPropertyTable ObjFPT in ListOfFPT)
+        {
+
+            <th>@ObjFPT.FieldName</th>
+
+
+        }
+
+    </tr>
+    @foreach (var item in ListOfData)
+    {
+        <tr>
+
+            @foreach( FormPropertyTable ObjFPT in ListOfFPT){ 
+            <td>@DynamicModule.getVal(item,"F"+ObjFPT.TableFieldId.ToString())</td>
+            
+            }
+           
+            
+           
+        </tr>
+    }
+
+</table>

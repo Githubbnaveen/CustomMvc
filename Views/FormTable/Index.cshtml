@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CustomMvc.Models.CustomMvcClass.FormTable>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TableNameID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FormName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FormType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FormJavaScript)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rights)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TableNameID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FormName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FormType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FormJavaScript)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rights)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            <a href="/FormFieldProp/index?Fid=@item.TableNameID">Add Property</a>
+            <a href="/TableData/index?Fid=@item.TableNameID">ViewData</a>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<CustomMvc.Models.CustomMvcClass.FormPropertyTable>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create",new {Fid=Request.QueryString["Fid"] })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TableFieldId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FormTableId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FieldName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FieldType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FieldValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefualValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FormFieldOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FieldColSpan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FiledClass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisplayInDataTable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Format)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JavaScript)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckRights)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TableFieldId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FormTableId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FieldName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FieldType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FieldValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefualValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FormFieldOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FieldColSpan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FiledClass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayInDataTable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Format)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JavaScript)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckRights)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
