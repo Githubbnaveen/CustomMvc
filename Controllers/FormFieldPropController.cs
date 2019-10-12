@@ -67,6 +67,9 @@ namespace CustomMvc.Controllers
                   //= new SelectList(ListOfTyp, "id", "name", selectedId);
                   ViewBag.Type=new SelectList(ListOfTyp, "id", "name", selectedId);
             return ListOfTyp.Count > 0;
+
+
+
         }
 
     }
